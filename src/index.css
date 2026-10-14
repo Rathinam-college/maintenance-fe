@@ -1,0 +1,445 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-surface-hover: var(--bg-surface-hover);
+  --color-primary-text: var(--text-primary);
+  --color-muted-text: var(--text-muted);
+  --color-divider: var(--border-divider);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+}
+
+@layer base {
+  :root, [data-theme="bright"] {
+    --bg-base: #e5e7eb;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f3f4f6;
+    --text-primary: #111827;
+    --text-muted: #4b5563;
+    --border-divider: #d1d5db;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --shadow-style: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --backdrop-blur: none;
+    --bg-input: #f3f4f6;
+    --bg-sticky: #ffffff;
+    --bg-sticky-accent: #eff6ff;
+  }
+
+  [data-theme="dark"] {
+    --bg-base: #030712;
+    --bg-surface: #1f2937;
+    --bg-surface-hover: #374151;
+    --text-primary: #ffffff;
+    --text-muted: #9ca3af;
+    --border-divider: #4b5563;
+    --color-accent: #3b82f6;
+    --color-accent-hover: #60a5fa;
+    --shadow-style: 0 10px 15px -3px rgb(0 0 0 / 0.7);
+    --backdrop-blur: none;
+    --bg-input: #111827;
+    --bg-sticky: #1f2937;
+    --bg-sticky-accent: #111827;
+  }
+
+  [data-theme="adobe3d"] {
+    --bg-base: #cbd5e1;
+    --bg-surface: #f1f5f9;
+    --bg-surface-hover: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-muted: #475569;
+    --border-divider: #94a3b8;
+    --color-accent: #0284c7;
+    --color-accent-hover: #0369a1;
+    --shadow-style: 12px 12px 24px rgba(148, 163, 184, 0.7), -12px -12px 24px rgba(255, 255, 255, 0.8);
+    --shadow-inset: inset 3px 3px 6px rgba(148, 163, 184, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+    --backdrop-blur: none;
+    --bg-input: #e2e8f0;
+    --bg-sticky: #f1f5f9;
+    --bg-sticky-accent: #e2e8f0;
+  }
+
+  [data-theme="glass"] {
+    --bg-base: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+    --bg-surface: rgba(15, 23, 42, 0.4);
+    --bg-surface-hover: rgba(30, 41, 59, 0.5);
+    --text-primary: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --border-divider: rgba(255, 255, 255, 0.15);
+    --color-accent: #38bdf8;
+    --color-accent-hover: #7dd3fc;
+    --shadow-style: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --backdrop-blur: blur(16px);
+    --bg-input: rgba(0, 0, 0, 0.25);
+    --bg-sticky: #282454;
+    --bg-sticky-accent: #1a1738;
+  }
+
+  [data-theme="3dsurface"] {
+    --bg-base: #323232;
+    --bg-surface: #424242;
+    --bg-surface-hover: #4a4a4a;
+    --text-primary: #e0e0e0;
+    --text-muted: #9e9e9e;
+    --border-divider: #202020;
+    --color-accent: #264f78;
+    --color-accent-hover: #1e3f60;
+    --shadow-style: 2px 2px 5px rgba(0,0,0,0.5), -1px -1px 2px rgba(255,255,255,0.05);
+    --shadow-inset: inset 2px 2px 4px rgba(0,0,0,0.6), inset -1px -1px 2px rgba(255,255,255,0.05);
+    --backdrop-blur: none;
+    --bg-input: #202020;
+    --bg-sticky: #424242;
+    --bg-sticky-accent: #323232;
+  }
+
+  body {
+    background: var(--bg-base);
+    color: var(--text-primary);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+}
+
+.theme-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-divider);
+  box-shadow: var(--shadow-style);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  backdrop-filter: var(--backdrop-blur);
+  transition: all 0.5s ease;
+}
+
+.theme-sticky {
+  background: var(--bg-sticky);
+  transition: all 0.5s ease;
+}
+
+.theme-sticky-accent {
+  background: var(--bg-sticky-accent);
+  transition: all 0.5s ease;
+}
+
+.theme-text {
+  color: var(--text-primary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+.theme-hover:hover {
+  background: var(--bg-surface-hover);
+}
+
+.theme-accent-text {
+  color: var(--color-accent);
+}
+
+.theme-accent-bg {
+  background: var(--color-accent);
+}
+
+.theme-border {
+  border-color: var(--border-divider);
+}
+
+/* Table Sub-Row Tinting */
+.theme-row-actual {
+  /* Default background, transparent */
+}
+.theme-row-additional {
+  background-color: rgba(59, 130, 246, 0.06) !important; /* Faint Blue tint */
+}
+.theme-row-additional .theme-sticky, .theme-row-additional .theme-sticky-accent {
+  background-image: linear-gradient(rgba(59, 130, 246, 0.06), rgba(59, 130, 246, 0.06)) !important;
+}
+
+.theme-row-others {
+  background-color: rgba(139, 92, 246, 0.06) !important; /* Faint Purple/Violet tint */
+}
+.theme-row-others .theme-sticky, .theme-row-others .theme-sticky-accent {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.06), rgba(139, 92, 246, 0.06)) !important;
+}
+
+.theme-input {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-divider);
+  transition: all 0.3s ease;
+}
+
+[data-theme="adobe3d"] .theme-input {
+  box-shadow: var(--shadow-inset);
+  border: 1px solid transparent;
+}
+
+[data-theme="glass"] .theme-input {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-theme="3dsurface"] .theme-panel {
+  border-top: 1px solid #5a5a5a;
+  border-left: 1px solid #5a5a5a;
+  border-bottom: 1px solid #1a1a1a;
+  border-right: 1px solid #1a1a1a;
+}
+
+[data-theme="3dsurface"] .theme-input {
+  box-shadow: var(--shadow-inset);
+  border-top: 1px solid #1a1a1a;
+  border-left: 1px solid #1a1a1a;
+  border-bottom: 1px solid #5a5a5a;
+  border-right: 1px solid #5a5a5a;
+}
+
+/* Realistic 3D Buttons for Photoshop Surface Theme */
+[data-theme="3dsurface"] button {
+  background: linear-gradient(to bottom, #5f5f5f, #4a4a4a) !important;
+  border-top: 1px solid #7a7a7a !important;
+  border-left: 1px solid #7a7a7a !important;
+  border-bottom: 1px solid #1a1a1a !important;
+  border-right: 1px solid #1a1a1a !important;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.1), 0 2px 3px rgba(0,0,0,0.4) !important;
+  color: #e0e0e0 !important;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.6) !important;
+  border-radius: 12px !important;
+  transition: none !important;
+}
+
+[data-theme="3dsurface"] button:active {
+  background: #3a3a3a !important;
+  border-top: 1px solid #1a1a1a !important;
+  border-left: 1px solid #1a1a1a !important;
+  border-bottom: 1px solid #5a5a5a !important;
+  border-right: 1px solid #5a5a5a !important;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6) !important;
+  transform: translateY(1px);
+}
+
+[data-theme="3dsurface"] button.bg-blue-600,
+[data-theme="3dsurface"] button.bg-indigo-600,
+[data-theme="3dsurface"] button.theme-accent-bg {
+  background: linear-gradient(to bottom, #306599, #264f78) !important;
+  border-top: 1px solid #488bd3 !important;
+  border-left: 1px solid #488bd3 !important;
+  border-bottom: 1px solid #0f2336 !important;
+  border-right: 1px solid #0f2336 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="3dsurface"] button.bg-blue-600:active,
+[data-theme="3dsurface"] button.bg-indigo-600:active,
+[data-theme="3dsurface"] button.theme-accent-bg:active {
+  background: #1e3f60 !important;
+  border-top: 1px solid #0f2336 !important;
+  border-left: 1px solid #0f2336 !important;
+  border-bottom: 1px solid #306599 !important;
+  border-right: 1px solid #306599 !important;
+}
+
+/* --- Cinematic RGU Logo Animation --- */
+.anim-letter {
+    stroke-width: 2px;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    fill-opacity: 0;
+    animation: drawCinematic 1.5s ease-in-out forwards, fillCinematic 1s 1.2s ease-out forwards;
+}
+.letter-r { stroke: #71307e; --end-fill: #71307e; animation-delay: 0s, 0s; }
+.letter-g { stroke: #2096db; --end-fill: #2096db; animation-delay: 0.4s, 0.4s; }
+.letter-u { stroke: #a5cb3a; --end-fill: #a5cb3a; animation-delay: 0.8s, 0.8s; }
+
+@keyframes drawCinematic {
+    0% { stroke-dashoffset: 1500; fill-opacity: 0; }
+    100% { stroke-dashoffset: 0; fill-opacity: 0; }
+}
+@keyframes fillCinematic {
+    0% { fill: var(--end-fill); fill-opacity: 0; }
+    100% { fill: var(--end-fill); fill-opacity: 1; stroke-opacity: 0; }
+}
+
+.anim-fade-up {
+    opacity: 0;
+    animation: fadeUpCinematic 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.subtitle-group { animation-delay: 1.8s; }
+.university-group { animation-delay: 2.1s; }
+
+@keyframes fadeUpCinematic {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.anim-rect {
+    transform-box: fill-box;
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: scaleXCinematic 1s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+.rect-1 { fill: #f29a33; animation-delay: 2.4s; }
+.rect-2 { fill: #2096db; animation-delay: 2.6s; }
+.rect-3 { fill: #a5cb3a; animation-delay: 2.8s; }
+
+@keyframes scaleXCinematic {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
+/* =========================================
+   CUSTOM THEME: "Two Reflections" (Glass/Mercury)
+   ========================================= */
+[data-theme="two-reflections"] {
+  --bg-base: #e2e8f0;
+  --bg-surface: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(226,232,240,0.5) 100%);
+  --bg-surface-hover: linear-gradient(145deg, rgba(255,255,255,1), rgba(241,245,249,0.6));
+  --text-primary: #1e293b;
+  --text-muted: #475569;
+  --border-divider: rgba(255, 255, 255, 0.5);
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --shadow-style: 10px 10px 20px rgba(100, 116, 139, 0.2), -10px -10px 20px rgba(255, 255, 255, 0.8), inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+  --shadow-inset: inset 4px 4px 8px rgba(100, 116, 139, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+  --backdrop-blur: blur(12px);
+  --bg-input: rgba(241,245,249,0.5);
+  --bg-sticky: #e2e8f0;
+  --bg-sticky-accent: #cbd5e1;
+}
+
+[data-theme="two-reflections"] .theme-panel {
+  box-shadow: var(--shadow-style) !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+[data-theme="two-reflections"] button {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(241,245,249,0.4)) !important;
+  box-shadow: 4px 4px 8px rgba(100, 116, 139, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 1), inset -1px -1px 2px rgba(100, 116, 139, 0.05) !important;
+  border: 1px solid rgba(255,255,255,0.6) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Harmonious Neon Fan Effect */
+[data-theme="two-reflections"] button::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(90deg, #0ea5e9, #6366f1, #dc2eee, #09eeca, #06f9da);
+  background-size: 300% 300%;
+  z-index: -1;
+  filter: blur(6px);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="two-reflections"] button:hover::before {
+  opacity: 0.85;
+  filter: blur(10px);
+  animation: ledPulse 6s ease-in-out infinite;
+}
+
+[data-theme="two-reflections"] button.theme-accent-bg {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+}
+
+/* =========================================
+   DARK NEON GLASS THEME
+   ========================================= */
+[data-theme="dark-glass"] {
+  --bg-base: #050b14;
+  --bg-surface: linear-gradient(135deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.5) 100%);
+  --bg-surface-hover: linear-gradient(145deg, rgba(51,65,85,0.9), rgba(30,41,59,0.6));
+  --text-primary: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-divider: rgba(255, 255, 255, 0.1);
+  --color-accent: #00f3ff;
+  --color-accent-hover: #ff00c8;
+  --shadow-style: 10px 10px 20px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.05), inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+  --shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.05);
+  --backdrop-blur: blur(16px);
+  --bg-input: rgba(15,23,42,0.5);
+  --bg-sticky: #0a1120;
+  --bg-sticky-accent: #050b14;
+}
+
+[data-theme="dark-glass"] .theme-panel {
+  box-shadow: var(--shadow-style) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* Authentic LED Backlight Effect */
+[data-theme="dark-glass"] button {
+  position: relative;
+  background: linear-gradient(145deg, rgba(30,41,59,0.8), rgba(15,23,42,0.4)) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -2px -2px 6px rgba(255, 255, 255, 0.05), inset 1px 1px 2px rgba(255, 255, 255, 0.1), inset -1px -1px 2px rgba(0, 0, 0, 0.2) !important;
+  z-index: 1;
+}
+[data-theme="dark-glass"] button::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(90deg, #0ea5e9, #6366f1, #dc2eee, #09eeca, #06f9da);
+  background-size: 300% 300%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+[data-theme="dark-glass"] button:hover::before {
+  opacity: 1;
+  animation: ledPulse 6s ease-in-out infinite;
+}
+
+/* =========================================
+   RATHINAM GLOBAL UNIVERSITY LIGHT
+   ========================================= */
+[data-theme="rathinam-light"] {
+  --bg-base: #f4f5f7;
+  --bg-surface: rgba(255, 255, 255, 0.8);
+  --bg-surface-hover: rgba(255, 255, 255, 1);
+  --text-primary: #3C3C3C;
+  --text-muted: #6b7280;
+  --border-divider: rgba(0, 0, 0, 0.08);
+  --color-accent: #71307e;
+  --color-accent-hover: #5a2665;
+  --shadow-style: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --backdrop-blur: blur(12px);
+  --bg-input: #ffffff;
+  --bg-sticky: #ffffff;
+  --bg-sticky-accent: #f4f5f7;
+}
+
+/* =========================================
+   RATHINAM GLOBAL UNIVERSITY DARK
+   ========================================= */
+[data-theme="rathinam-dark"] {
+  --bg-base: #141116;
+  --bg-surface: rgba(255, 255, 255, 0.03);
+  --bg-surface-hover: rgba(255, 255, 255, 0.08);
+  --text-primary: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-divider: rgba(255, 255, 255, 0.08);
+  --color-accent: #a5cb3a;
+  --color-accent-hover: #86a62f;
+  --shadow-style: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+  --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  --backdrop-blur: blur(12px);
+  --bg-input: rgba(255, 255, 255, 0.05);
+  --bg-sticky: #1a171d;
+  --bg-sticky-accent: #141116;
+}
+
+@keyframes ledPulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+

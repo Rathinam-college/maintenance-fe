@@ -19,7 +19,7 @@ export default function LoginView({ onLoginSuccess, theme, setTheme }) {
 
     try {
       const res = await axios.post(`${API_URL}/token/`, {
-        username,
+        username: username.trim(),
         password
       });
 

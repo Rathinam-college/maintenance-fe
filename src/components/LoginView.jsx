@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Lock, User, KeyRound, AlertCircle } from 'lucide-react';
+import { Lock, User, KeyRound, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import AnimatedRGULogo from './AnimatedRGULogo';
 
 const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8005/api' : '/maintenance/api');
@@ -8,6 +8,7 @@ const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'l
 export default function LoginView({ onLoginSuccess, theme, setTheme }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -135,13 +136,22 @@ export default function LoginView({ onLoginSuccess, theme, setTheme }) {
                 <KeyRound size={18} />
               </div>
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full pl-11 pr-4 py-3 rounded-xl bg-gray-50/5 border theme-border theme-text focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
+                className="w-full pl-11 pr-11 py-3 rounded-xl bg-gray-50/5 border theme-border theme-text focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
                 placeholder="Enter password"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="input-icon-btn absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-blue-500 transition-colors focus:outline-none cursor-pointer"
+                title={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
           </div>
 

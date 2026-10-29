@@ -443,3 +443,38 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Input Icon Buttons (Password visibility toggle, clear buttons, etc.) */
+button.input-icon-btn,
+[data-theme] button.input-icon-btn,
+[data-theme="3dsurface"] button.input-icon-btn,
+[data-theme="two-reflections"] button.input-icon-btn,
+[data-theme="dark-glass"] button.input-icon-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  text-shadow: none !important;
+  border-radius: 0 !important;
+  transform: none !important;
+}
+
+button.input-icon-btn::before,
+[data-theme] button.input-icon-btn::before,
+[data-theme="3dsurface"] button.input-icon-btn::before,
+[data-theme="two-reflections"] button.input-icon-btn::before,
+[data-theme="dark-glass"] button.input-icon-btn::before {
+  display: none !important;
+  content: none !important;
+}
+
+[data-theme] button.input-icon-btn:active,
+[data-theme="3dsurface"] button.input-icon-btn:active,
+[data-theme="two-reflections"] button.input-icon-btn:active,
+[data-theme="dark-glass"] button.input-icon-btn:active {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+
